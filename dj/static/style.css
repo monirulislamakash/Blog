@@ -1,0 +1,25 @@
+.lgo{
+    font-family:'Source Code Pro', monospace;
+}
+.fcolor{
+	color:#0dcaf0 !important;
+}
+.fs{
+    font-weight: 600;
+    font-size: 26px;
+}
+.profile{
+	border-radius: 30px;
+	margin-top:10px;
+	background:#0000000f;
+	padding:30px;
+
+}
+.propic{
+	width:140px;
+	height:140px;
+	border-radius:100px;
+}
+p{
+	text-align: justify;
+}

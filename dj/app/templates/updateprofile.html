@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+{% endblock  %}
+{% block title %}{% endblock  %}
+{% block body %}
+<div class="container profile col-lg-8" align="center">
+	<form>
+		{{userfrom.as_p}}
+        {{profrom.as_p}}
+	</form>
+</div>
+{% endblock  %}
