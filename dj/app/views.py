@@ -14,16 +14,22 @@ def index(request):
         return render(request,"index.html",sendv)
     return redirect(login)
 def singup(request):
+    f_name=request.POST.get("f_name")
+    l_name=request.POST.get("l_name")
     email=request.POST.get("email")
     passw=request.POST.get("password")
     cpassw=request.POST.get("confirmpassword")
+    bio=request.POST.get("bio")
+    propic=request.POST.get("propic")
     if request.method=="POST":
         if passw==passw:
             try:
                 user=User.objects.get(username=email)
                 return render(request,"singup.html",{'error':"User already exists"})  
             except User.DoesNotExist:
-                user=User.objects.create_user(username=email,password=cpassw)
+                user=User.objects.create_user(username=email,password=cpassw,first_name=f_name,last_name=l_name)
+                rfm=ProfilUpdate(image=propic,bio=bio)
+                rfm.save()
                 return render(request,"singup.html",{'success':"user created successfully"})    
         else:
             return render(request,"singup.html") 
@@ -57,13 +63,13 @@ def updateprofile(request):
     if request.user.is_authenticated:
         if request.method=="POST":
             ufrom=UserForm(request.POST,instance=request.user)
-            pfrom=ProForm(request.POST,request.FILES,instance=request.user.updatprofile)
+            pfrom=ProForm(request.POST,request.FILES,instance=request.user.profilupdate)
             if ufrom.is_valid() and pfrom.is_valid():
                 ufrom.save()
                 pfrom.save()
         else:
             ufrom=UserForm(instance= request.user)
-            pfrom=ProForm(instance= request.user.updatprofile)
+            pfrom=ProForm(instance= request.user.profilupdate)
         return render(request,"updateprofile.html",{"userfrom":ufrom,"profrom":pfrom})
     else:
         return redirect(login)

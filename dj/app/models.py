@@ -11,7 +11,7 @@ class AllPost(models.Model):
         return self.title
 class ProfilUpdate(models.Model):
     user=models.OneToOneField(User,on_delete=models.CASCADE,primary_key=True)
-    image=models.ImageField(upload_to="profile/",default="image/pro_avter.png")
+    image=models.ImageField(upload_to="static/profile/",default="static/propic/pro_avter.png")
     bio=models.TextField(default="Write Your 'Boi'")
     def __str__(self):
         return str(self.user)

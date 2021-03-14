@@ -23,6 +23,16 @@
     {% csrf_token %}
       <h1 class="h2 mt-3 mb-3 fcolor" align="center">Register</h1>
       <div class="mb-3 fcolor">
+        <label for="exampleInputEmail1" class="form-label">First Name</label>
+        <input name="f_name" type="text" placeholder="Entar Your First Name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+      </div>
+      <div class="mb-3 fcolor">
+        <label for="exampleInputEmail1" class="form-label">Last Name</label>
+        <input name="l_name" type="text" placeholder="Entar Your Last Name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+      </div>
+      <div class="mb-3 fcolor">
         <label for="exampleInputEmail1" class="form-label">Email address</label>
         <input name="email" type="email" placeholder="Entar Your email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
         <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
@@ -36,6 +46,16 @@
         <label for="exampleInputEmail1" class="form-label">Confirm Password</label>
         <input name="confirmpassword" type="password" placeholder="Confirm Password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
         <div id="emailHelp" class="form-text">We'll never share your Password with anyone else.</div>
+      </div>
+      <div class="mb-3 fcolor">
+        <label for="exampleInputEmail1" class="form-label">Bio</label>
+        <input name="bio" type="text" placeholder="Entar Your Bio" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text">Write your Bio befor You Start</div>
+      </div>
+      <div class="mb-3 fcolor">
+        <label for="exampleInputEmail1" class="form-label">Profile Picture</label>
+        <input name="propic" type="file" placeholder="Entar Your email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text">Upload your Profile picture.</div>
       </div>
       <div class="checkbox mb-3">
         <label>

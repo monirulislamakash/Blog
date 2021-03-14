@@ -7,10 +7,10 @@
 {% block body %}
 <div class="container profile col-lg-8" align="center">
 	<h1>Profile</h1><hr>
-	<img class="propic" src="{{request.user.updatprofile.image.url}}">
+	<a href="{{request.user.profilupdate.image.url}}"><img class="propic" src="{{request.user.profilupdate.image.url}}"></a>
 	<h4>{{request.user.first_name}} {{request.user.last_name}}</h4>
     <h5>Bio</h5>
-	<p>{{request.user.updatprofile.bio}}<br>
+	<p>{{request.user.profilupdate.bio}}<br>
     <a href="{% url 'updateprofile' %}"><button type="button" class="btn btn-outline-info ms-auto">Edit</button></a>
 </div>
 {% endblock  %}

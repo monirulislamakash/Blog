@@ -8,4 +8,4 @@ class UserForm(forms.ModelForm):
 class ProForm(forms.ModelForm):
     class Meta:
         model=ProfilUpdate
-        fields=["image"]
+        fields=["image","bio"]
