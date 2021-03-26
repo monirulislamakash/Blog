@@ -1,13 +1,14 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,HttpResponse
 from django.contrib.auth.models import User
 from django.contrib import auth
 from .models import AllPost
 from .models import ProfilUpdate
-from .forms import UserForm,ProForm
+from .forms import UserForm,ProForm,PostEdit
+from datetime import datetime
 # Create your views here.
 def index(request):
     if request.user.is_authenticated:
-        aiipost=AllPost.objects.order_by('-date')
+        aiipost=AllPost.objects.order_by('-id')
         sendv={
             "post":aiipost
         }
@@ -67,9 +68,26 @@ def updateprofile(request):
             if ufrom.is_valid() and pfrom.is_valid():
                 ufrom.save()
                 pfrom.save()
+                return render(request,"profile.html",{"error":"Profile Update successfully"})
         else:
             ufrom=UserForm(instance= request.user)
             pfrom=ProForm(instance= request.user.profilupdate)
         return render(request,"updateprofile.html",{"userfrom":ufrom,"profrom":pfrom})
     else:
         return redirect(login)
+def delete(request,id):
+    if request.method=="POST":
+        pk=AllPost.objects.get(pk=id)
+        pk.delete()
+        return redirect(index)
+def edite(request,id):
+    if request.method=="POST":
+        pk=AllPost.objects.get(pk=id)
+        p_u_from=PostEdit(request.POST,instance=pk)
+        if p_u_from.is_valid():
+            p_u_from.save()
+            return render(request,"postedit.html",{"editfrom":p_u_from})
+    else:
+        pk=AllPost.objects.get(pk=id)
+        p_u_from=PostEdit(instance=pk)
+        return render(request,"postedit.html",{"editfrom":p_u_from})

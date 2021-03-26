@@ -1,5 +1,5 @@
 from django.db import models
-from datetime import datetime
+from datetime import datetime,date,time
 from django.contrib.auth.models import User
 from django.contrib import auth
 # Create your models here.

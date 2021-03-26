@@ -1,16 +1,25 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block head %}{% endblock  %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+{% endblock  %}
 {% block title %}{% endblock  %}
 {% block body %}
 <div class="container">
 {% for i in post %}
 	<div class="card mt-3">
     <div class="card-header">
-        <h3>{{i.title|safe}}</h3>
+        <h3 class="head">{{i.title|safe}}</h3>
+        <a href="{% url 'edite' i.id %}" class="edit"><ion-icon name="create-outline"></ion-icon></a>
+
+        <form class="d-inline" action="{% url 'delete' i.id %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="delete"><ion-icon name="trash-outline"></ion-icon></a></button>
+        </form>
     </div>
     <div class="card-body">
         <blockquote class="blockquote mb-0">
+        
         <p>{{i.post|safe}}</p>
         <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
         </blockquote>

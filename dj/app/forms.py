@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from .models import ProfilUpdate
+from .models import ProfilUpdate,AllPost
 class UserForm(forms.ModelForm):
     class Meta:
         model=User
@@ -18,3 +18,11 @@ class ProForm(forms.ModelForm):
         widgets={
             "bio":forms.Textarea(attrs={"class":"form-control col-lg-3"})
         }
+class PostEdit(forms.ModelForm):
+    class Meta:
+        model=AllPost
+        fields=["title","post","date"]
+        widgets={
+                "title":forms.TextInput(attrs={"class":"form-control col-lg-3"}),
+                "post":forms.Textarea(attrs={"class":"form-control col-lg-3"})
+            }

@@ -5,6 +5,13 @@
 {% endblock  %}
 {% block title %}{% endblock  %}
 {% block body %}
+
+	{% if error %}
+		<div class="alert alert-success alert-dismissible fade show container" role="alert">
+		<strong>{{error}}</strong> Thank You!
+		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		</div>
+	{% endif %}
 <div class="container profile col-lg-8" align="center">
 	<h1>Profile</h1><hr>
 	<a href="{{request.user.profilupdate.image.url}}"><img class="propic" src="{{request.user.profilupdate.image.url}}"></a>

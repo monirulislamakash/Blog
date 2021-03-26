@@ -23,3 +23,21 @@
 p{
 	text-align: justify;
 }
+.delete{
+	float:right;
+	text-decoration: none;
+	color: red;
+	font-size:20px;
+	padding: 10px;
+	border: none;
+}
+.edit{
+	float:right;
+	text-decoration: none;
+	color: teal;
+	font-size:20px;
+	padding: 10px;
+}
+.head{
+	display:inline-block;
+}
