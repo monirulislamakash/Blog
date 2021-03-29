@@ -12,6 +12,7 @@ urlpatterns = [
     path('updateprofile',views.updateprofile,name="updateprofile" ),
     path('delete/<int:id>/',views.delete,name="delete" ),
     path('update/<int:id>/',views.edite,name="edite" ),
+    path('blog_support',views.support,name="support" ),
 
 
 ]

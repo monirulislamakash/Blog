@@ -5,6 +5,7 @@ from .models import AllPost
 from .models import ProfilUpdate
 from .forms import UserForm,ProForm,PostEdit
 from datetime import datetime
+from django.core.mail import send_mail
 # Create your views here.
 def index(request):
     if request.user.is_authenticated:
@@ -91,3 +92,16 @@ def edite(request,id):
         pk=AllPost.objects.get(pk=id)
         p_u_from=PostEdit(instance=pk)
         return render(request,"postedit.html",{"editfrom":p_u_from})
+def support(request):
+    if request.method=="POST":
+        problem=request.POST.get("problem")
+        feedback=request.POST.get("feedback")
+        send_mail(
+            problem,
+            feedback,
+            'monirulislamakash18@gmail.com',
+            ['aaj7731@gmail.com'],
+            fail_silently=False,
+        )
+        return render(request,"support.html",{'successfully':'we will get back to you soon'})
+    return render(request,"support.html")
